@@ -275,7 +275,7 @@
     </main>
 
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         var tag = document.createElement('script');
         tag.id = 'iframe-demo';
         tag.src = 'https://www.youtube.com/iframe_api';
@@ -294,7 +294,7 @@
                 videoId: 'https://www.youtube.com/watch?v=https://www.youtube.com/watch?v=https://www.youtube.com/watch?v=http',
             });
         }
-    </script>
+    </script> --}}
     <style>
         .owl-carousel .owl-nav {
             z-index: 2;

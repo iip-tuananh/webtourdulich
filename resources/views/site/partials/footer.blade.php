@@ -63,26 +63,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="footerPhotoList">
-                            {{-- <div id="myModal" class="modal">
-                                <div class="overlayModal"></div>
-                                <span class="close">&times;</span>
-                                <img class="modal-content" id="img0">
-                                <img class="modal-content" id="img1">
-                                <div id="caption"></div>
-                            </div> --}}
                             <div class="giayphep">
-                                {{-- <a target="_blank"
-                                    href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=42819"><img
-                                        style="display: block;max-width: 165px;margin:0 auto 10px;width:100%;height: auto;"
-                                        src="https://vietlandtravel.vn/assets/css/img/bocongthuong.png" alt="bct"
-                                        title="Đăng ký bộ công thương"></a>
-                                <img style="cursor: pointer" id="myImg0"
-                                    src="https://vietlandtravel.vn/upload/img/banner/ban-copy-2-min.png" alt=""
-                                    title="">
-                                <img style="cursor: pointer" id="myImg1"
-                                    src="https://vietlandtravel.vn/upload/img/banner/vietland-travel-giay-phep.png"
-                                    alt="" title=""> --}}
-
                                 <p><strong><span style="font-size:14px">Danh mục menu</span></strong></p>
                                 <ul>
                                     <li><a style="text-transform:capitalize; font-weight: bold;" href="{{ route('front.home-page') }}">Trang chủ</a></li>
@@ -107,33 +88,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <script>
-                var modal = document.getElementById('myModal');
-                var img = document.getElementById('myImg0');
-                var img2 = document.getElementById('myImg1');
-                var modalImg = document.getElementById("img0");
-                var modalImg2 = document.getElementById("img1");
-                var captionText = document.getElementById("caption");
-                img.onclick = function() {
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                    captionText.innerHTML = this.alt;
-                }
-
-                img2.onclick = function() {
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                    captionText.innerHTML = this.alt;
-                }
-                var span = document.getElementsByClassName("close")[0];
-                span.onclick = function() {
-                    modal.style.display = "none";
-                }
-                var span2 = document.getElementsByClassName("overlayModal")[0];
-                span2.onclick = function() {
-                    modal.style.display = "none";
-                }
-            </script> --}}
         </div>
     </div>
     <div class="footerHotline">

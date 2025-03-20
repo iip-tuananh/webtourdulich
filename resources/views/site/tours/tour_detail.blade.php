@@ -110,21 +110,19 @@
                                     <div class="col-sm-8 col-xs-12">
                                         <p><span style="color:#ff0000"><span style="font-size:14px"><strong>TH&Ocirc;NG TIN LI&Ecirc;N HỆ</strong></span></span></p>
 
-                                        <p><span style="color:#003300"><span style="font-size:14px"><strong>C&Ocirc;NG TY TNHH VIETLAND HOLIDAY </strong></span></span></p>
+                                        <p><span style="color:#003300"><span style="font-size:14px"><strong>{{ $config->short_name_company }}</strong></span></span></p>
 
-                                        <p><span style="color:#003300"><span style="font-size:14px"><strong>( VIETLAND TRAVEL )</strong></span></span></p>
-
-                                        <p><span style="font-size:14px"><strong>Địa Chỉ:&nbsp;</strong> Tầng 7, 15 Y&ecirc;n L&atilde;ng, Quận Đống Đa, H&agrave; Nội<br />
-<strong>Hotline:&nbsp;</strong> <a href="tel:098 868 1927">098 868 1927</a> // <a href="tel:09 11 2020 88">09 11 2020 88</a><br />
-<strong>Email:</strong>&nbsp;sales@vietlandtravel.vn&nbsp;<br />
-<strong>Website:&nbsp;</strong> www.vietlandtravel.vn / https://vietlandholiday.com/</span></p>
+                                        <p><span style="font-size:14px"><strong>Địa Chỉ:&nbsp;</strong> {{ $config->address_company }}<br />
+<strong>Hotline:&nbsp;</strong> <a href="tel:{{ $config->hotline }}">{{ $config->hotline }}</a> <br />
+<strong>Email:</strong>&nbsp;{{ $config->email }}<br />
+<strong>Website:&nbsp;</strong> {{ url('/') }}</span></p>
                                     </div>
                                     <div class="col-sm-4 col-xs-12 detail--right">
 
                                         <div class="row_btnbook text-center">
-                                            <i class="fa fa-hand-o-right fa1"></i><a href="https://vietlandtravel.vn/booking?id=158" class="btn__book">Đặt tour</a> <i class="fa fa-hand-o-left fa2"></i>
+                                            <i class="fa fa-hand-o-right fa1"></i><a href="{{ route('front.booking-tour', ['slug' => $tour->slug]) }}" class="btn__book">Đặt tour</a> <i class="fa fa-hand-o-left fa2"></i>
                                         </div>
-                                        <div class="hotline text-center"><i class="fa fa-phone-square"></i><a href="">0988681927</a></div>
+                                        <div class="hotline text-center"><i class="fa fa-phone-square"></i><a href="">{{ $config->hotline }}</a></div>
                                     </div>
                                 </div>
 

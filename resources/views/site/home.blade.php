@@ -1,9 +1,11 @@
 @extends('site.layouts.master')
 @section('title')
-    <title>{{$config->web_title}}</title>
+    {{ $config->web_title }}
 @endsection
+
 @section('css')
 @endsection
+
 @section('content')
     <section class="qts_head_banner">
         <div class="owl-carousel slider_main">
@@ -374,18 +376,6 @@
                 };
             });
         })();
-    </script>
-
-
-    <!-- footer -->
-    <!-- Global site tag (gtag.js) - Google Ads: 831471195 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-831471195"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'AW-831471195');
     </script>
 @endsection
 @push('scripts')

@@ -74,9 +74,6 @@
                                 @endforeach
 
 
-
-
-
                                 <li class="menu-item has-dropdown"> <a href="{{ route('front.index-blog') }}" class="menu-link">
                                         TIN TỨC                  </a>
                                     <ul class="nav-dropdown menu megaMenu" style="column-count: 1;-webkit-column-count: 1; -moz-column-count: 1; ">
@@ -89,6 +86,8 @@
 
                                     </ul>
                                 </li>
+
+                                <li class="menu-item"><a href="{{ route('front.about-us') }}" class="menu-link">Giới thiệu</a></li>
 
                                 <li class="menu-item"><a href="{{ route('front.booking-tour') }}" class="menu-link"><i class="fa fa-location-arrow" aria-hidden="true"></i> Đặt tour</a> </li>
                             </ul>

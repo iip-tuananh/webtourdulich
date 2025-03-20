@@ -7,6 +7,7 @@ use App\Http\Traits\ResponseTrait;
 use App\Model\Admin\Block;
 use App\Model\Admin\Category;
 use App\Model\Admin\CategorySpecial;
+use App\Model\Admin\Config;
 use App\Model\Admin\Gallery;
 use App\Model\Admin\Product;
 use App\Model\Admin\Tour;
@@ -163,6 +164,17 @@ class FrontController extends Controller
         $json->message = "Lấy dữ liệu thành công";
 
         return Response::json($json);
+    }
+
+    public function aboutUs(Request $request) {
+        $banners = Banner::query()->with('image')->latest()->get();
+        $config = Config::query()->first();
+        $newBlogs = Post::with(['image'])->where(['status'=>1])
+            ->orderBy('id','DESC')
+            ->select(['id','name','slug'])
+            ->limit(6)->get();
+
+        return view('site.about_us', compact('config', 'banners', 'newBlogs'));
     }
 
     // ajax load product home page
@@ -334,14 +346,6 @@ class FrontController extends Controller
 
     }
 
-
-    // Giới thiệu
-    public function aboutUs()
-    {
-        $data['partners'] = Partner::with(['image'])->get();
-        $data['reviews'] = Review::with(['image'])->get();
-        return view('site.about_us', $data);
-    }
 
     // Liên hệ
     public function contactUs()

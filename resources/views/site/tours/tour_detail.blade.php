@@ -6,11 +6,11 @@
 @endsection
 @section('content')
     <main>
-        <div class="bannerDetail" style="background: url(https://vietlandtravel.vn/upload/img/category/dulichbien.jpg) no-repeat; ">
+        <div class="bannerDetail" style="background: url('{{  @$tour->category->image->path ?? '' }}') no-repeat; ">
             <div class="container">
                 <div class="row_pc">
                     <div class="banner--wrapper">
-                        <h2>Tour Biển</h2>
+                        <h2>{{ $tour->category->name }}</h2>
                         <span class="hidden">Hôm nay, 19/03 <img data-src="{{ @$item->image->path ?? '' }}" alt="Thời tiết" class="asyncImage"> 19°C</span>
                     </div>
                 </div>

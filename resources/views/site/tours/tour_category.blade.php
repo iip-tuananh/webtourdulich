@@ -6,7 +6,7 @@
 @endsection
 @section('content')
     <main>
-        <div class="bannerDetail" >
+        <div class="bannerDetail" style="background: url('{{  @$category->image->path ?? '' }}') no-repeat; ">
             <div class="container">
                 <div class="row_pc">
                     <div class="banner--wrapper">

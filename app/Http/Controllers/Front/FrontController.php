@@ -7,6 +7,7 @@ use App\Http\Traits\ResponseTrait;
 use App\Model\Admin\Block;
 use App\Model\Admin\Category;
 use App\Model\Admin\CategorySpecial;
+use App\Model\Admin\Config;
 use App\Model\Admin\Gallery;
 use App\Model\Admin\Product;
 use App\Model\Admin\Tour;
@@ -136,13 +137,13 @@ class FrontController extends Controller
 
     public function tourDetail(Request $request, $slug) {
         $tour = Tour::with(['image', 'category.image', 'category.parent.image'])->where('slug', $slug)->first();
-
         $tourSuggest = Tour::query()->with(['image'])
             ->where('cate_id', $tour->cate_id)
             ->whereNotIn('id', [$tour->id])
             ->latest()->take('10')->get();
+        $config = Config::query()->first();
 
-        return view('site.tours.tour_detail', compact('tour', 'tourSuggest'));
+        return view('site.tours.tour_detail', compact('tour', 'tourSuggest', 'config'));
     }
 
     public function bookingTour(Request $request, $slug = null) {
@@ -163,6 +164,17 @@ class FrontController extends Controller
         $json->message = "Lấy dữ liệu thành công";
 
         return Response::json($json);
+    }
+
+    public function aboutUs(Request $request) {
+        $banners = Banner::query()->with('image')->latest()->get();
+        $config = Config::query()->first();
+        $newBlogs = Post::with(['image'])->where(['status'=>1])
+            ->orderBy('id','DESC')
+            ->select(['id','name','slug'])
+            ->limit(6)->get();
+
+        return view('site.about_us', compact('config', 'banners', 'newBlogs'));
     }
 
     // ajax load product home page
@@ -334,14 +346,6 @@ class FrontController extends Controller
 
     }
 
-
-    // Giới thiệu
-    public function aboutUs()
-    {
-        $data['partners'] = Partner::with(['image'])->get();
-        $data['reviews'] = Review::with(['image'])->get();
-        return view('site.about_us', $data);
-    }
 
     // Liên hệ
     public function contactUs()

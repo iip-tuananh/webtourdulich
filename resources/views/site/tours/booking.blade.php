@@ -1,6 +1,12 @@
 @extends('site.layouts.master')
 @section('title')
-    <title></title>
+    Trang đặt tour
+@endsection
+@section('description')
+    {{$config->web_des}}
+@endsection
+@section('image')
+    {{url(''. $banners[0]->image->path)}}
 @endsection
 @section('css')
 @endsection

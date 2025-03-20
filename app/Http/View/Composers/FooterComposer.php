@@ -20,11 +20,13 @@ class FooterComposer
     public function compose(View $view)
     {
         $config = Config::query()->get()->first();
-
-
         $categories = Category::query()->where('parent_id', 0)->orderBy('sort_order')->get();
 
+        $postCategories = PostCategory::query()
+            ->where(['parent_id' => 0])
+            ->orderBy('sort_order')
+            ->get();
 
-        $view->with(['config' => $config, 'categories' => $categories]);
+        $view->with(['config' => $config, 'categories' => $categories, 'postCategories' => $postCategories]);
     }
 }

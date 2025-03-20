@@ -1,11 +1,11 @@
 <div class="col-md-3 col-xs-6 col-480-12">
     <div class="tourBox">
-        <div class="tourPhoto"> <a href="https://vietlandtravel.vn/ha-noi-mong-cai-dong-hung-trung-quoc-ha-noi.html">
+        <div class="tourPhoto"> <a href="{{route('front.tour-detail', ['slug' => $item->slug])}}">
                 <img data-src="{{ @$item->image->path ?? '' }}"
                      title=" {{ $item->title_short }}      "
                      class="asyncImage"> </a>
             <div class="tourBox__title">
-                <h3><a href="https://vietlandtravel.vn/ha-noi-mong-cai-dong-hung-trung-quoc-ha-noi.html">
+                <h3><a href="{{route('front.tour-detail', ['slug' => $item->slug])}}">
                         {{ $item->title_short }}                   </a></h3>
             </div>
         </div>

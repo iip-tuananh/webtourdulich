@@ -1,16 +1,22 @@
 @extends('site.layouts.master')
 @section('title')
-    <title></title>
+    {{$tour->title ?? $tour->title_short}}
+@endsection
+@section('description')
+    {{$tour->description}}
+@endsection
+@section('image')
+    {{ $tour->image->path ?? '' }}
 @endsection
 @section('css')
 @endsection
 @section('content')
     <main>
-        <div class="bannerDetail" style="background: url(https://vietlandtravel.vn/upload/img/category/dulichbien.jpg) no-repeat; ">
+        <div class="bannerDetail" style="background: url('{{  @$tour->category->image->path ?? '' }}') no-repeat; ">
             <div class="container">
                 <div class="row_pc">
                     <div class="banner--wrapper">
-                        <h2>Tour Biển</h2>
+                        <h2>{{ $tour->category->name }}</h2>
                         <span class="hidden">Hôm nay, 19/03 <img data-src="{{ @$item->image->path ?? '' }}" alt="Thời tiết" class="asyncImage"> 19°C</span>
                     </div>
                 </div>
@@ -32,7 +38,6 @@
                         </ul>
                     </div>
                     <div class="detailTour">
-                        <h1 class="tourTitle hidden">HÀ NỘI - ĐÀ NẴNG - BÀ NÀ - HỘI AN - HÀ NỘI </h1>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="detail--left">
@@ -53,9 +58,6 @@
                                     <div class="row_btnbook">
                                         <i class="fa fa-hand-o-right fa1"></i><a href="{{ route('front.booking-tour', ['slug' => $tour->slug]) }}" class="btn__book">Đặt tour</a>
                                     </div>
-
-
-
                                     <div class="hotline"><i class="fa fa-phone-square"></i><a href="tel:0988681927">0988681927</a></div>
                                 </div>
                             </div>
@@ -68,9 +70,9 @@
                                 <h3>Giới thiệu</h3>
                                 <div class="text__detail--add fixcontent">
                                     <p style="text-align:center"><span style="font-size:14px"><strong>CHƯƠNG TR&Igrave;NH THAM QUAN DU LỊCH</strong><br />
-<span style="color:#c0392b"><strong>{{ $tour->title ?? $tour->title_short }}</strong></span><br />
-<strong>Thời gian: </strong> {{ $tour->times }} <br />
-<strong>Khởi h&agrave;nh:&nbsp; {{ $tour->start_off }}</strong></span></p>
+                                    <span style="color:#c0392b"><strong>{{ $tour->title ?? $tour->title_short }}</strong></span><br />
+                                    <strong>Thời gian: </strong> {{ $tour->times }} <br />
+                                    <strong>Khởi h&agrave;nh:&nbsp; {{ $tour->start_off }}</strong></span></p>
                                 </div>
                             </div>
 
@@ -110,26 +112,24 @@
                                     <div class="col-sm-8 col-xs-12">
                                         <p><span style="color:#ff0000"><span style="font-size:14px"><strong>TH&Ocirc;NG TIN LI&Ecirc;N HỆ</strong></span></span></p>
 
-                                        <p><span style="color:#003300"><span style="font-size:14px"><strong>C&Ocirc;NG TY TNHH VIETLAND HOLIDAY </strong></span></span></p>
+                                        <p><span style="color:#003300"><span style="font-size:14px"><strong>{{ $config->short_name_company }}</strong></span></span></p>
 
-                                        <p><span style="color:#003300"><span style="font-size:14px"><strong>( VIETLAND TRAVEL )</strong></span></span></p>
-
-                                        <p><span style="font-size:14px"><strong>Địa Chỉ:&nbsp;</strong> Tầng 7, 15 Y&ecirc;n L&atilde;ng, Quận Đống Đa, H&agrave; Nội<br />
-<strong>Hotline:&nbsp;</strong> <a href="tel:098 868 1927">098 868 1927</a> // <a href="tel:09 11 2020 88">09 11 2020 88</a><br />
-<strong>Email:</strong>&nbsp;sales@vietlandtravel.vn&nbsp;<br />
-<strong>Website:&nbsp;</strong> www.vietlandtravel.vn / https://vietlandholiday.com/</span></p>
+                                        <p><span style="font-size:14px"><strong>Địa Chỉ:&nbsp;</strong> {{ $config->address_company }}<br />
+                                        <strong>Hotline:&nbsp;</strong> <a href="tel:{{ str_replace(' ', '', $config->hotline) }}" style="color: #ff0000; text-decoration: none;" title="{{ $config->hotline }}">{{ $config->hotline }}</a> <br />
+                                        <strong>Email:</strong>&nbsp;{{ $config->email }}<br />
+                                        <strong>Website:&nbsp;</strong> {{ url('/') }}</span></p>
                                     </div>
                                     <div class="col-sm-4 col-xs-12 detail--right">
 
                                         <div class="row_btnbook text-center">
-                                            <i class="fa fa-hand-o-right fa1"></i><a href="https://vietlandtravel.vn/booking?id=158" class="btn__book">Đặt tour</a> <i class="fa fa-hand-o-left fa2"></i>
+                                            <i class="fa fa-hand-o-right fa1"></i><a href="{{ route('front.booking-tour', ['slug' => $tour->slug]) }}" class="btn__book">Đặt tour</a> <i class="fa fa-hand-o-left fa2"></i>
                                         </div>
-                                        <div class="hotline text-center"><i class="fa fa-phone-square"></i><a href="">0988681927</a></div>
+                                        <div class="hotline text-center"><i class="fa fa-phone-square"></i><a href="">{{ $config->hotline }}</a></div>
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="p-share">
+                            {{-- <div class="p-share">
                                 <div class="clearfix-30"></div>
                                 <div class="social-button " style="margin-left:5px;">
                                     <div class="g-plusone" data-size="medium" data-annotation="none" style="margin-left:5px;"></div>
@@ -142,9 +142,9 @@
                             <div class="fb-comments" data-href="https://vietlandtravel.vn/ha-noi-da-nang-ba-na-hoi-an-ha-noi.html" data-width="100%"
                                  data-numposts="10"
                                  data-colorscheme="light">
-                            </div>
+                            </div> --}}
 
-                            <style>
+                            {{-- <style>
                                 .fb-comments iframe{
                                     width: 100% !important;
                                 }
@@ -162,7 +162,7 @@
                                     <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="js/widgets.js" charset="utf-8"></script>
                                 </div>
                                 <div class="clearfix-15"></div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-md-4">
                             <div class="detailSidebar">

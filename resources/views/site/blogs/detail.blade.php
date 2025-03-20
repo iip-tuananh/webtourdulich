@@ -1,6 +1,12 @@
 @extends('site.layouts.master')
 @section('title')
-    <title>{{$config->web_title}}</title>
+    {{ $data['blog']->name ?? $blog->name }}
+@endsection
+@section('description')
+    {{ $data['blog']->intro ?? $blog->intro }}
+@endsection
+@section('image')
+    {{ $data['blog']->image->path ?? $blog->image->path }}
 @endsection
 @section('css')
 @endsection
@@ -80,7 +86,7 @@
                                 {!! $data['blog']->body !!}
                             </div>
                             <div class="clearfix-15"></div>
-                            <div class="p-share">
+                            {{-- <div class="p-share">
                                 <div class="clearfix-15"></div>
                                 <div class="social-button">
                                     <div class="fb-like fb_iframe_widget" style="margin-left:5px;" data-href="https://vietlandtravel.vn/du-thuyen-star-scorpio-tin-vui-cho-khach-du-lich-viet-nam-duoc-xuat-canh-chu-du-bang-duong-bien-ra-nuoc-ngoai.html" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=126821687974504&amp;container_width=51&amp;href=https%3A%2F%2Fvietlandtravel.vn%2Fdu-thuyen-star-scorpio-tin-vui-cho-khach-du-lich-viet-nam-duoc-xuat-canh-chu-du-bang-duong-bien-ra-nuoc-ngoai.html&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=false&amp;show_faces=false&amp;size=small"><span style="vertical-align: bottom; width: 90px; height: 28px;"><iframe name="f46faccc629248699" width="1000px" height="1000px" data-testid="fb:like Facebook Social Plugin" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v2.10/plugins/like.php?action=like&amp;app_id=126821687974504&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Dfc97068d84e4a0e27%26domain%3Dvietlandtravel.vn%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fvietlandtravel.vn%252Ff2861dd23f419e4b6%26relation%3Dparent.parent&amp;container_width=51&amp;href=https%3A%2F%2Fvietlandtravel.vn%2Fdu-thuyen-star-scorpio-tin-vui-cho-khach-du-lich-viet-nam-duoc-xuat-canh-chu-du-bang-duong-bien-ra-nuoc-ngoai.html&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=false&amp;show_faces=false&amp;size=small" style="border: none; visibility: visible; width: 90px; height: 28px;" class=""></iframe></span></div>
@@ -94,7 +100,7 @@
                                     <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="X Post Button" src="https://platform.twitter.com/widgets/tweet_button.2f70fb173b9000da126c79afe2098f02.vi.html#dnt=false&amp;id=twitter-widget-0&amp;lang=vi&amp;original_referer=https%3A%2F%2Fvietlandtravel.vn%2Fdu-thuyen-star-scorpio-tin-vui-cho-khach-du-lich-viet-nam-duoc-xuat-canh-chu-du-bang-duong-bien-ra-nuoc-ngoai.html&amp;size=m&amp;text=Du%20thuy%E1%BB%81n%20Star%20Scorpio%2C%20tin%20vui%20cho%20kh%C3%A1ch%20du%20l%E1%BB%8Bch%20Vi%E1%BB%87t%20Nam%20%C4%91%C6%B0%E1%BB%A3c%20xu%E1%BA%A5t%20c%E1%BA%A3nh%20chu%20du%20b%E1%BA%B1ng%20%C4%91%C6%B0%E1%BB%9Dng%20bi%E1%BB%83n%20ra%20n%C6%B0%E1%BB%9Bc%20ngo%C3%A0i!&amp;time=1742453562241&amp;type=share&amp;url=https%3A%2F%2Fvietlandtravel.vn%2Fdu-thuyen-star-scorpio-tin-vui-cho-khach-du-lich-viet-nam-duoc-xuat-canh-chu-du-bang-duong-bien-ra-nuoc-ngoai.html" style="position: static; visibility: visible; width: 88px; height: 20px;"></iframe><script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                                 </div>
                                 <div class="clearfix-15"></div>
-                            </div>
+                            </div> --}}
                             <div class="clearfix-30"></div>
                             <section id="title"><!-- TITLE -->
                                 <div class="container">
@@ -216,78 +222,6 @@
                 font-size: 29px;
             }
         </style>
-
-        <div class="icon_fixed visible-xs">
-            <div class="fix_mb">
-
-
-                <div class="mess">
-                    <a href="https://m.me/179153369290737" target="_blank">
-                        <img src="https://vietlandtravel.vn/img/mess.png" alt="">
-                    </a>
-                </div>
-
-
-            </div>
-
-        </div>
-
-        <div class="icon_fixed hidden-sm hidden-xs">
-
-            <div class="mess">
-                <a href="https://m.me/179153369290737" target="_blank">
-                    <img src="https://vietlandtravel.vn/img/mess.png" alt="">
-                </a>
-            </div>
-
-
-        </div>
-
-        <style>
-            .icon_fixed{position: fixed;z-index: 999;top: 82%;right: 30px}
-            .icon_fixed img{width: 45px;height: 45px;margin-bottom: 20px}
-            @media (max-width: 576px){
-                .suntory-alo-phone{top: 89%}
-                .call_pc{display: none}
-                .suntory-alo-phone{position: relative !important;margin-top: -25px;width: 75px;margin-left: -20px}
-                .fix_mb{position: fixed;display: flex;justify-content: space-between;top: 90%;width: 85%}
-            }
-            @media(min-width: 1500px){
-                .icon_fixed{top: 68% !important;}
-            }
-        </style>
-        <!--   -->
-        <script type="text/javascript">
-            (() => {
-                'use strict';
-                // Page is loaded
-                const objects = document.getElementsByClassName('asyncImage');
-                Array.from(objects).map((item) => {
-                    // Start loading image
-                    const img = new Image();
-                    img.src = item.dataset.src;
-                    // Once image is loaded replace the src of the HTML element
-                    img.onload = () => {
-                        item.classList.remove('asyncImage');
-                        return item.nodeName === 'IMG' ?
-                            item.src = item.dataset.src :
-                            item.style.backgroundImage = `url(${item.dataset.src})`;
-                    };
-                });
-            })();
-        </script>
-
-
-        <!-- footer -->
-        <!-- Global site tag (gtag.js) - Google Ads: 831471195 -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-831471195"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'AW-831471195');
-        </script>
         @endsection
         @push('scripts')
 

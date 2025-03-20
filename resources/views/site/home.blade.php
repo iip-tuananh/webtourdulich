@@ -2,6 +2,12 @@
 @section('title')
     {{ $config->web_title }}
 @endsection
+@section('description')
+    {{$config->web_des}}
+@endsection
+@section('image')
+    {{url(''. $banners[0]->image->path ?? '')}}
+@endsection
 
 @section('css')
 @endsection
@@ -9,7 +15,6 @@
 @section('content')
     <section class="qts_head_banner">
         <div class="owl-carousel slider_main">
-
             @foreach($banners as $banner)
                 <div class="item">
                     <div class="img_banner">
@@ -18,9 +23,7 @@
                         </a>
                     </div>
                 </div>
-
             @endforeach
-
         </div>
     </section>
 
@@ -39,7 +42,6 @@
                 <div class="search">
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">
-
                             <div>
                                 <div class="radioGroup">
                                     <span><input type="radio" name="rdoTourType" value="62" checked="checked">Tour trong nước</span>
@@ -70,34 +72,32 @@
             </div>
         </div>
     </div>
-
     <main>
-        <h1 class="hidden">
-            Vietland Travel, du lịch trọn gói trong nước và quốc tế    </h1>
         <div class="container" >
             <div class="row_pc">
 
                 @foreach($categoriesSpecial as $cateSpecial)
-                    <div class="tour">
-                        <h2 class="titleH2"><a href="{{ route('front.tour-category', ['slug' => $cateSpecial->slug]) }}">
-                                {{ $cateSpecial->name }}
-                            </a></h2>
-                        <div class="clearfix">
-                            <div class="slide4 owl-carousel">
-                            @foreach($cateSpecial->tours as $tour)
-                                    @include('site.partials.item_carousel', ['item' => $tour])
-                            @endforeach
+                    @if ($cateSpecial->tours->count())
+                        <div class="tour">
+                            <h2 class="titleH2"><a href="{{ route('front.tour-category', ['slug' => $cateSpecial->slug]) }}">
+                                    {{ $cateSpecial->name }}
+                                </a></h2>
+                            <div class="clearfix">
+                                <div class="slide4 owl-carousel">
+                                @foreach($cateSpecial->tours as $tour)
+                                        @include('site.partials.item_carousel', ['item' => $tour])
+                                @endforeach
+                                </div>
                             </div>
+                            <div class="clearfix-20 hidden-xs"></div>
+                            <div class="text-center"> <a href="{{ route('front.tour-category', ['slug' => $cateSpecial->slug]) }}" class="view-more">Xem thêm >></a>
+                            </div>
+                            <div class="clearfix-20 hidden-xs"></div>
                         </div>
-                        <div class="clearfix-20 hidden-xs"></div>
-                        <div class="text-center"> <a href="{{ route('front.tour-category', ['slug' => $cateSpecial->slug]) }}" class="view-more">Xem thêm >></a>
-                        </div>
-                        <div class="clearfix-20 hidden-xs"></div>
-                    </div>
+                    @endif
                 @endforeach
-
-
                 @foreach($categoryParents as $categoryParent)
+                    @if ($categoryParent->tours->count())
                         <div class="tour">
                             <h2 class="titleH2">
                                 <a href="{{ route('front.tour-category', ['slug' => $categoryParent->slug]) }}">{{ $categoryParent->name }}</a>
@@ -114,10 +114,8 @@
                             </div>
                             <div class="clearfix-20 hidden-xs"></div>
                         </div>
+                    @endif
                 @endforeach
-
-
-
                 <div class="bestTour--wrapper">
                     <div class="row">
                         <div class="col-md-6">
@@ -159,9 +157,8 @@
                                     <div class="anh owl-carousel owl-theme">
                                         @foreach($galleries as $gallery)
                                             <div class="item">
-                                                <!-- <iframe width="100%" height="245" src="https://www.youtube.com/embed/https://www.youtube.com/watch?v=https://www.youtube.com/watch?v=https://www.youtube.com/watch?v=http" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                                                 <img src="{{ @$gallery->image->path ?? '' }}" alt="{{ $gallery->title }}"
-                                                     style="width:100%; height:245px;">
+                                                    style="width:100%; height:245px;">
                                             </div>
                                         @endforeach
 
@@ -234,7 +231,7 @@
                                     items: 2,
                                 },
                                 0: {
-                                    items: 1,
+                                    items: 2,
                                 }
                             },
                             rewind: false,
@@ -314,69 +311,6 @@
             font-size: 29px;
         }
     </style>
-
-    <div class="icon_fixed visible-xs">
-        <div class="fix_mb">
-
-
-            <div class="mess">
-                <a href="https://m.me/179153369290737" target="_blank">
-                    <img src="https://vietlandtravel.vn/img/mess.png" alt="">
-                </a>
-            </div>
-
-
-        </div>
-
-    </div>
-
-
-
-
-    <div class="icon_fixed hidden-sm hidden-xs">
-
-        <div class="mess">
-            <a href="https://m.me/179153369290737" target="_blank">
-                <img src="https://vietlandtravel.vn/img/mess.png" alt="">
-            </a>
-        </div>
-
-
-    </div>
-
-    <style>
-        .icon_fixed{position: fixed;z-index: 999;top: 82%;right: 30px}
-        .icon_fixed img{width: 45px;height: 45px;margin-bottom: 20px}
-        @media (max-width: 576px){
-            .suntory-alo-phone{top: 89%}
-            .call_pc{display: none}
-            .suntory-alo-phone{position: relative !important;margin-top: -25px;width: 75px;margin-left: -20px}
-            .fix_mb{position: fixed;display: flex;justify-content: space-between;top: 90%;width: 85%}
-        }
-        @media(min-width: 1500px){
-            .icon_fixed{top: 68% !important;}
-        }
-    </style>
-    <!--   -->
-    <script type="text/javascript">
-        (() => {
-            'use strict';
-            // Page is loaded
-            const objects = document.getElementsByClassName('asyncImage');
-            Array.from(objects).map((item) => {
-                // Start loading image
-                const img = new Image();
-                img.src = item.dataset.src;
-                // Once image is loaded replace the src of the HTML element
-                img.onload = () => {
-                    item.classList.remove('asyncImage');
-                    return item.nodeName === 'IMG' ?
-                        item.src = item.dataset.src :
-                        item.style.backgroundImage = `url(${item.dataset.src})`;
-                };
-            });
-        })();
-    </script>
 @endsection
 @push('scripts')
 

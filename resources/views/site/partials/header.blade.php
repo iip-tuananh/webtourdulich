@@ -40,10 +40,10 @@
                 <div class="clearfix"></div>
                 <div class="row">
                     <div class="header--mid">
-                        <div class="col-md-6 hidden-sm hidden-xs"> <a href="{{ route('front.home-page') }}"
+                        <div class="col-md-4 hidden-sm hidden-xs"> <a href="{{ route('front.home-page') }}"
                                 class="logo_pc"> <img data-src="{{ $config->image->path }}"
                                     title="{{ $config->web_title }}" class="asyncImage"> </a> </div>
-                        <div class="col-md-6 col-xs-6">
+                        <div class="col-md-5 col-xs-6">
                             <div class="imfoCompany"> <img data-src="/site/images/icon-support.png" alt="suport"
                                     class="asyncImage">
                                 <div class="imfoCompany__text"> <a
@@ -55,6 +55,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-3 col-xs-6 text-right" style="padding-top: 20px;">
+                            <a href="{{ route('front.booking-tour') }}" class="btn btn-booking animate__animated  animate__infinite animate__flipInY">Đặt Tour</a>
+                        </div>
+                        <style>
+                            .btn-booking {
+                                background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18) !important;
+                                color: #fff;
+                                padding: 10px 20px;
+                                border-radius: 50px;
+                                font-size: 16px;
+                                font-weight: 600;
+                                text-transform: uppercase;
+                                animation-duration: 2s !important;
+                            }
+                        </style>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -71,6 +86,7 @@
                             <ul class="nav-menu menu clearfix">
                                 <li class="menu-item is-active"><a href="{{ route('front.home-page') }}"
                                         class="menu-link"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                                <li class="menu-item"><a href="{{ route('front.about-us') }}" class="menu-link">Giới thiệu</a></li>
                                 @foreach ($categories as $category)
                                     <li class="menu-item has-dropdown">
                                         <a href="{{ route('front.tour-category', ['slug' => $category->slug]) }}"
@@ -89,22 +105,39 @@
                                         </ul>
                                     </li>
                                 @endforeach
-                                <li class="menu-item has-dropdown"> <a href="{{ route('front.index-blog') }}"
-                                        class="menu-link">
-                                        TIN TỨC </a>
-                                    <ul class="nav-dropdown menu megaMenu"
-                                        style="column-count: 1;-webkit-column-count: 1; -moz-column-count: 1; ">
-                                        @foreach ($postCategories as $postCategory)
+                                @foreach ($postCategories as $category)
+                                    <li class="menu-item has-dropdown">
+                                        <a href="{{ route('front.index-blog', ['slug' => $category->slug]) }}"
+                                            class="menu-link">
+                                            {{ $category->name }}
+                                        </a>
+                                        @if (count($category->getChilds()) > 0)
+                                            <ul class="nav-dropdown menu megaMenu"
+                                                style="column-count: 4;-webkit-column-count: 4; -moz-column-count: 4; ">
+                                                @foreach ($category->getChilds() as $child)
+                                                    <li class="menu-item"><a
+                                                            href="{{ route('front.index-blog', ['slug' => $category->slug, 'childSlug' => $child->slug]) }}"
+                                                            class="menu-link">
+                                                            {{ $child->name }} </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
+
+                                {{-- <li class="menu-item has-dropdown"> <a href="{{ route('front.index-blog') }}" class="menu-link">
+                                        TIN TỨC                  </a>
+                                    <ul class="nav-dropdown menu megaMenu" style="column-count: 1;-webkit-column-count: 1; -moz-column-count: 1; ">
+                                        @foreach($postCategories as $postCategory)
                                             <li class="menu-item">
                                                 <a href="{{ route('front.index-blog', ['slug' => $postCategory->slug]) }}"
                                                     class="menu-link"> {{ $postCategory->name }} </a>
                                             </li>
                                         @endforeach
                                     </ul>
-                                </li>
-                                <li class="menu-item"><a href="{{ route('front.booking-tour') }}"
-                                        class="menu-link"><i class="fa fa-location-arrow" aria-hidden="true"></i> Đặt
-                                        tour</a> </li>
+                                </li> --}}
+                                <li class="menu-item"><a href="{{ route('front.booking-tour') }}" class="menu-link"><i class="fa fa-location-arrow" aria-hidden="true"></i> Đặt tour</a> </li>
                             </ul>
                         </div>
                     </nav>
@@ -113,7 +146,7 @@
         </div>
     </div>
     <!--slide-->
-    <div class="hotline_sp visible-sm visible-xs">
+    <div class="hotline_sp visible-sm visible-xs hidden-md hidden-xs">
         <a href="tel: {{ str_replace(' ', '', $config->hotline) }}" class="hotline"><i class="fa fa-phone-square"
                 aria-hidden="true"></i> Hotline: {{ $config->hotline }}</a>
     </div>

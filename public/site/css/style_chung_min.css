@@ -1163,6 +1163,10 @@
 	content: "\f106"
 }
 
+.fa-angles-up:before {
+	content: "\f102"
+}
+
 .fa-angle-down:before {
 	content: "\f107"
 }
@@ -4710,7 +4714,7 @@ h6 {
 	transition: all .25s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 	-webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
 	transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
-	background-color: #24721e
+	background-color: #fc4700;
 }
 
 .icon-menu .line-1 {
@@ -4761,7 +4765,7 @@ h6 {
 }
 
 .nav-menu>.menu-item.is-active {
-	background: #44883d
+	background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 }
 
 .nav-menu>.menu-item.is-active>.menu-link {
@@ -4769,7 +4773,7 @@ h6 {
 }
 
 .nav-menu>.menu-item:hover {
-	background: #44883d
+	background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 }
 
 .nav-menu>.menu-item:hover>.menu-link {
@@ -4847,7 +4851,8 @@ h6 {
 }
 
 .nav-menu>.menu-item>.menu-link {
-	padding: 8px 15px
+	padding: 8px 15px;
+	text-transform: uppercase;
 }
 
 @media (max-width: 991px) {
@@ -5033,7 +5038,10 @@ h6 {
 	z-index: 9;
 	padding: 1px 20px;
 	height: 62px;
-	box-shadow: 0 0 3px 2px #ccc
+	box-shadow: 0 0 3px 2px #ccc;
+	background: url(../images/bg-headertop.png) no-repeat;
+	background-size: cover;
+	background-color: #ffff;
 }
 
 .img_logo_mb {
@@ -5055,7 +5063,7 @@ h6 {
 }
 
 .logo_pc img {
-	max-width: 20%;
+	max-width: 30%;
 }
 
 .menu_header {
@@ -5214,19 +5222,19 @@ h6 {
 
 #go_top {
 	position: fixed;
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+	border-radius: 5px;
 	background: #000;
 	color: #fff;
 	text-align: center;
-	line-height: 25px;
-	font-size: 18px;
+	line-height: 40px;
+	font-size: 24px;
 	font-weight: 700;
 	background-size: 100% 100%;
 	display: inline-block;
 	z-index: 100;
-	bottom: 40px;
+	bottom: 37px;
 	right: 25px;
 	display: none
 }
@@ -5405,7 +5413,7 @@ h6 {
 }
 
 .imfoCompany__text i {
-	color: #24721e;
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	font-size: 24px;
 	width: 21px
 }
@@ -5420,7 +5428,8 @@ h6 {
 }
 
 .mainMenu {
-	background: #24721e
+	background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
+	background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 }
 
 .menu_main {
@@ -5537,7 +5546,7 @@ h6 {
 
 .search button {
 	border: none;
-	background: #24721e;
+	background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	color: #fff;
 	padding: 2px 24px;
 	border-radius: 5px;
@@ -5562,7 +5571,7 @@ h6 {
 }
 
 .titleH2 a {
-	color: #24721e
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 }
 
 .tourBox {
@@ -5635,7 +5644,7 @@ h6 {
 }
 
 .bookTour {
-	background: #24721e;
+	background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	color: #fff;
 	border-radius: 5px;
 	font-family: 'Roboto_Regular';
@@ -5812,14 +5821,15 @@ h6 {
 .listFooter li a {
 	font-size: 15.75px;
 	position: relative;
-	padding-left: 15px
+	padding-left: 15px;
+	display: block;
 }
 
 .listFooter li a:before {
 	content: url(../images/rightft.png);
 	position: absolute;
-	left: 0;
-	top: -3px
+	left: 0px;
+	top: 0px;
 }
 
 .footer__text {
@@ -5848,7 +5858,7 @@ h6 {
 }
 
 .menuFooter {
-	background: #24721e;
+	background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	padding: 11px
 }
 
@@ -6149,7 +6159,7 @@ h6 {
 	}
 
 	.menuFooter {
-		background: #24721e;
+		background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 		padding: 5px
 	}
 
@@ -6318,7 +6328,7 @@ h6 {
 	font-size: 20px;
 	font-family: arial;
 	line-height: 33px;
-	color: #24721e
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 }
 
 #book .btn-primary {
@@ -6395,7 +6405,7 @@ h6 {
 }
 
 .breadcrumb ul li:last-child a {
-	color: #24721e
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 }
 
 .breadcrumb ul li:not(:last-child) a:after {
@@ -6406,7 +6416,7 @@ h6 {
 	font-size: 24px;
 	text-transform: uppercase;
 	font-family: 'Roboto_Bold';
-	color: #24721e;
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	text-align: center;
 	padding: 30px 0 50px
 }
@@ -6448,7 +6458,7 @@ h6 {
 }
 
 .detail--right .bookNow {
-	color: #24721e;
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	font-size: 18px;
 	font-style: italic;
 	font-family: 'Roboto_Bold'
@@ -6468,7 +6478,7 @@ h6 {
 }
 
 .btn__book:hover {
-	background: #24721e;
+	background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	color: #fff
 }
 
@@ -6517,17 +6527,17 @@ h6 {
 .schedule .nav-tabs>li.active>a,
 .schedule .nav-tabs>li.active>a:hover,
 .schedule .nav-tabs>li.active>a:focus {
-	background: #24721e;
+	background: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	color: #fff;
 	border-radius: 0;
-	border: 1px solid #24721e
+	border: 1px solid linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 }
 
 .schedule .nav>li>a:hover,
 .schedule .nav>li>a:focus {
 	text-decoration: none;
 	border-radius: 0;
-	background-color: #24721e;
+	background-color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	color: #fff
 }
 
@@ -6544,7 +6554,7 @@ h6 {
 	font-size: 18px;
 	font-family: 'Roboto_Bold';
 	text-transform: uppercase;
-	color: #24721e;
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	margin-bottom: 10px;
 	text-align: left
 }
@@ -6602,11 +6612,11 @@ h6 {
 }
 
 .detailSidebar h2 a {
-	color: #24721e
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 }
 
 .detailSidebar h2 a:hover {
-	color: #24721e
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 }
 
 .detailSidebar__photo {
@@ -6858,7 +6868,7 @@ h6 {
 	}
 
 	.nav-dropdown>.menu-item>.menu-link {
-		color: #24721e
+		color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 	}
 }
 
@@ -7062,7 +7072,7 @@ h6 {
 }
 
 .header--top a {
-	color: #24721e;
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	display: inline-block;
 	margin-left: 11px;
 	height: 10px
@@ -7194,7 +7204,7 @@ h6 {
 }
 
 .back_link li.active a {
-	color: #24721e
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);
 }
 
 .back_link li a:after {
@@ -7288,7 +7298,7 @@ h6 {
 .info__detail--add h3 {
 	font-family: 'Roboto_Bold';
 	font-size: 18px;
-	color: #24721e;
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	text-transform: uppercase;
 	text-align: center;
 	margin-bottom: 15px
@@ -7574,7 +7584,7 @@ h6 {
 .giatourchongoi h2 {
 	font-family: 'Roboto_Bold';
 	font-size: 18px;
-	color: #24721e;
+	color: linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 	text-transform: uppercase;
 	text-align: center;
 	margin-bottom: 10px
@@ -8277,7 +8287,7 @@ br {
 @media (max-width: 991px) {
 	.vbmslideSuport .item a img {
 		border-radius: 50%;
-		border: 2px solid #24721e;
+		border: 2px solid linear-gradient(135deg, #fc4700, #fd6809, #fe9d18);;
 		height: 81px;
 		width: 81px;
 	}
@@ -8331,15 +8341,21 @@ br {
 }
 
 .img_banner {
+    height: auto;
     width: 100%;          /* Độ rộng toàn trang (có thể thay đổi tùy ý) */
-    height: 800px;        /* Chiều cao cố định, bạn chỉnh lại theo nhu cầu */
+    /* height: 800px; */        /* Chiều cao cố định, bạn chỉnh lại theo nhu cầu */
     overflow: hidden;     /* Ẩn phần ảnh vượt quá chiều cao */
     position: relative;   /* Đảm bảo .banner là một khối chứa ảnh */
+}
+@media screen and (min-width: 991px) {
+    .img_banner {
+        height: 100vh;
+    }
 }
 
 .img_banner img {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     object-fit: cover;    /* Giúp ảnh bao phủ toàn bộ khung mà vẫn giữ tỉ lệ */
     display: block;       /* Xóa khoảng trống inline */
 }

@@ -4,6 +4,7 @@ namespace App\Providers;
 use App\Http\View\Composers\FooterComposer;
 use App\Http\View\Composers\HeaderComposer;
 use App\Http\View\Composers\MenuHomePageComposer;
+use App\Model\Admin\Banner;
 use Illuminate\Support\Facades\Schema; //SoftDelete
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -34,7 +35,9 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $config = \App\Model\Admin\Config::with(['image'])->where('id',1)->first();
+        $banners = Banner::query()->with('image')->latest()->get();
         view()->share('config', $config);
+        view()->share('banners', $banners);
 
         // \Illuminate\Database\Query\Builder::macro('toRawSql', function(){
 		// 	return array_reduce($this->getBindings(), function($sql, $binding){

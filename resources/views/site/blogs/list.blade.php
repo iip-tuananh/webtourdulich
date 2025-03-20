@@ -1,6 +1,6 @@
 @extends('site.layouts.master')
 @section('title')
-    <title>{{$config->web_title}}</title>
+    {{ $category->name }}
 @endsection
 @section('css')
 @endsection
@@ -195,78 +195,7 @@
                 font-size: 29px;
             }
         </style>
-
-        <div class="icon_fixed visible-xs">
-            <div class="fix_mb">
-
-
-                <div class="mess">
-                    <a href="https://m.me/179153369290737" target="_blank">
-                        <img src="https://vietlandtravel.vn/img/mess.png" alt="">
-                    </a>
-                </div>
-
-
-            </div>
-
-        </div>
-
-        <div class="icon_fixed hidden-sm hidden-xs">
-
-            <div class="mess">
-                <a href="https://m.me/179153369290737" target="_blank">
-                    <img src="https://vietlandtravel.vn/img/mess.png" alt="">
-                </a>
-            </div>
-
-
-        </div>
-
-        <style>
-            .icon_fixed{position: fixed;z-index: 999;top: 82%;right: 30px}
-            .icon_fixed img{width: 45px;height: 45px;margin-bottom: 20px}
-            @media (max-width: 576px){
-                .suntory-alo-phone{top: 89%}
-                .call_pc{display: none}
-                .suntory-alo-phone{position: relative !important;margin-top: -25px;width: 75px;margin-left: -20px}
-                .fix_mb{position: fixed;display: flex;justify-content: space-between;top: 90%;width: 85%}
-            }
-            @media(min-width: 1500px){
-                .icon_fixed{top: 68% !important;}
-            }
-        </style>
-        <!--   -->
-        <script type="text/javascript">
-            (() => {
-                'use strict';
-                // Page is loaded
-                const objects = document.getElementsByClassName('asyncImage');
-                Array.from(objects).map((item) => {
-                    // Start loading image
-                    const img = new Image();
-                    img.src = item.dataset.src;
-                    // Once image is loaded replace the src of the HTML element
-                    img.onload = () => {
-                        item.classList.remove('asyncImage');
-                        return item.nodeName === 'IMG' ?
-                            item.src = item.dataset.src :
-                            item.style.backgroundImage = `url(${item.dataset.src})`;
-                    };
-                });
-            })();
-        </script>
-
-
         <!-- footer -->
-        <!-- Global site tag (gtag.js) - Google Ads: 831471195 -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-831471195"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'AW-831471195');
-        </script>
         @endsection
         @push('scripts')
 

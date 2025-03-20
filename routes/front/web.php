@@ -11,6 +11,7 @@ Route::group(['namespace' => 'Front'], function () {
 
     Route::get('/get-info-tour/{id}','FrontController@getInfoTour')->name('front.getInfoTour');
     Route::get('/booking-tour/{slug?}','FrontController@bookingTour')->name('front.booking-tour');
+    Route::get('/about-us','FrontController@aboutUs')->name('front.about-us');
 
     // Route::get('/load-product-home-page','FrontController@loadProductHomePage')->name('front.load-product-home-page');
     Route::get('/danh-muc/{categorySlug}.html','FrontController@showProductCategory')->name('front.show-product-category');
@@ -36,7 +37,6 @@ Route::group(['namespace' => 'Front'], function () {
     Route::post('/lien-he','FrontController@postContact')->name('front.post-contact');
 
     // Blogs
-    Route::get('/gioi-thieu.html','FrontController@aboutUs')->name('front.about-us');
 //    Route::get('/tin-tuc.html','FrontController@indexBlog')->name('front.index-blog');
     Route::get('/tin-tuc/{slug}.html','FrontController@listBlog')->name('front.list-blog');
 //    Route::get('/chi-tiet-tin-tuc/{slug}.html','FrontController@detailBlog')->name('front.detail-blog');

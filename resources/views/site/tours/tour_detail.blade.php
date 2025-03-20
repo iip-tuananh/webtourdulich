@@ -51,7 +51,7 @@
                                     <p><i class="fa fa-map-marker"></i><span>Điểm đến :</span> {{ $tour->destination }}</p>
                                     <p class="bookNow">Số lượng có hạn. Đăng ký ngay để giữ chỗ!</p>
                                     <div class="row_btnbook">
-                                        <i class="fa fa-hand-o-right fa1"></i><a href="https://vietlandtravel.vn/booking?id=158" class="btn__book">Đặt tour</a>
+                                        <i class="fa fa-hand-o-right fa1"></i><a href="{{ route('front.booking-tour', ['slug' => $tour->slug]) }}" class="btn__book">Đặt tour</a>
                                     </div>
 
 

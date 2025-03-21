@@ -58,7 +58,7 @@
                                     <div class="row_btnbook">
                                         <i class="fa fa-hand-o-right fa1"></i><a href="{{ route('front.booking-tour', ['slug' => $tour->slug]) }}" class="btn__book">Đặt tour</a>
                                     </div>
-                                    <div class="hotline"><i class="fa fa-phone-square"></i><a href="tel:0988681927">0988681927</a></div>
+                                    <div class="hotline"><i class="fa fa-phone-square"></i><a href="tel:{{str_replace(' ','', $config->hotline)}}">{{$config->hotline}}</a></div>
                                 </div>
                             </div>
                         </div>

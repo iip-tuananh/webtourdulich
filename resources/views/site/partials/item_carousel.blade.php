@@ -1,6 +1,6 @@
 <div class="item">
     <div class="tourBox">
-        <div class="tourPhoto"> <a href=""><img
+        <div class="tourPhoto"> <a href="{{route('front.tour-detail', ['slug' => $item->slug])}}"><img
                         title="{{ $item->title ?? $item->title_short }}"
                         src="{{ @$item->image->path ?? '' }}"></a>
             <div class="tourBox__title">

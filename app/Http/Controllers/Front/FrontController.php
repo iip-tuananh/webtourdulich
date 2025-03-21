@@ -156,6 +156,68 @@ class FrontController extends Controller
         return view('site.tours.booking', compact('tours', 'tour'));
     }
 
+    public function submitBooking(Request $request)
+    {
+        \Illuminate\Support\Facades\DB::beginTransaction();
+        try {
+            $translate = [
+                'customer_name.required' => 'Vui lòng nhập họ tên',
+                'customer_phone.required' => 'Vui lòng nhập số điện thoại',
+                'customer_phone.regex' => 'Số điện thoại không đúng định dạng',
+                'customer_address.required' => 'Vui lòng nhập địa chỉ',
+                'customer_email.required' => 'Vui lòng nhập email',
+            ];
+
+            $validate = \Illuminate\Support\Facades\Validator::make(
+                $request->all(),
+                [
+                    'customer_name' => 'required',
+                    'customer_phone' => 'required|regex:/^(0)[0-9]{9,11}$/',
+                    'customer_address' => 'required',
+                    'customer_email' => 'required',
+                ],
+                $translate
+            );
+
+            $json = new \stdClass();
+
+            if ($validate->fails()) {
+                $json->success = false;
+                $json->errors = $validate->errors();
+                $json->message = "Thao tác thất bại!";
+                return \Illuminate\Support\Facades\Response::json($json);
+            }
+
+
+        $client = new \GuzzleHttp\Client();
+        $googleSheetUrl = 'https://script.google.com/macros/s/AKfycbx6Ebc8OGh0qBbzE8xWxHzzEgETVBQzT7f_ZQ3q61ZCO-czKqB9ukNnXA9N6HF6apPBgQ/exec';
+
+        $response = $client->post($googleSheetUrl, [
+            'form_params' => [
+                'customer_name'    => $request->customer_name,
+                'customer_address' => $request->customer_address,
+                'customer_phone'   => $request->customer_phone,
+                'customer_email'   => $request->customer_email,
+                'customer_time'   => $request->customer_time,
+                'customer_ticket'  => $request->customer_ticket,
+                'customer_content' => $request->customer_content,
+            ]
+        ]);
+
+            $result = json_decode($response->getBody(), true);
+            if (!isset($result['status']) || $result['status'] != 'success') {
+                throw new \Exception("Không thể gửi dữ liệu lên Google Sheet: " . $response->getBody());
+            }
+
+            DB::commit();
+            return Response::json(['success' => true]);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            dd($exception->getMessage());
+        }
+
+    }
+
     public function getInfoTour(Request $request, $id) {
         $tour = Tour::with('image')->find($id);
         $json = new \stdClass();

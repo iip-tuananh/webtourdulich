@@ -13,6 +13,8 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/booking-tour/{slug?}','FrontController@bookingTour')->name('front.booking-tour');
     Route::get('/about-us','FrontController@aboutUs')->name('front.about-us');
 
+    Route::post('/booking-tour','FrontController@submitBooking')->name('front.submit-booking');
+
     // Route::get('/load-product-home-page','FrontController@loadProductHomePage')->name('front.load-product-home-page');
     Route::get('/danh-muc/{categorySlug}.html','FrontController@showProductCategory')->name('front.show-product-category');
     Route::get('/load-more/product','FrontController@loadMoreProduct')->name('front.product-load-more');

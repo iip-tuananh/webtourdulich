@@ -54,7 +54,15 @@
 
                     <div class="clearfix-20"></div>
 
-                    <div class="row" ng-if="! isOk">
+                    <div class="row" ng-if="isOk">
+                        <p style="font-size: 20px">
+                            Cảm ơn Quý khách đã đặt tour thành công. Chúng tôi sẽ liên hệ với Quý khách sớm để cung cấp thông tin chi tiết, mong rằng Quý khách sẽ có một hành trình du lịch an toàn và thú vị.
+                        </p>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
 
                         <form name="form_booking" id="form-booking" action="#">
 
@@ -213,6 +221,10 @@
                                         <option ng-repeat="tour in tours" value="<% tour.id %>" ng-selected="tour.id == tour_id"><% tour.title_short %></option>
                                     </select>
 
+                                    <span class="invalid-feedback d-block" role="alert">
+                                                                        <strong><% errors.tour_id[0] %></strong>
+                                                                  </span>
+
                                 </div>
                                 <div class="fixtour" id="kq2" ng-if="tour_id">
                                     <div class="detail--left">
@@ -237,11 +249,7 @@
 
                     </div>
 
-                    <div class="row" ng-if="isOk">
-                        <p style="font-size: 20px">
-                            Cảm ơn Quý khách đã đặt tour thành công. Chúng tôi sẽ liên hệ với Quý khách sớm để cung cấp thông tin chi tiết, mong rằng Quý khách sẽ có một hành trình du lịch an toàn và thú vị.
-                        </p>
-                    </div>
+
 
                 </div>
 
@@ -268,6 +276,8 @@
             $scope.loading = {};
             $scope.isOk = false;
             $scope.loading.submit = false;
+            $scope.tour = {};
+
 
             $scope.getInfoTour = function () {
                 if($scope.tour_id) {
@@ -280,7 +290,6 @@
                         success: function(response) {
                             if (response.success) {
                                 $scope.tour = response.data;
-                                console.log( $scope.tour )
                             } else {
                                 toastr.warning('error');
                             }
@@ -295,25 +304,13 @@
                 } else {
                     $scope.tour_id = null;
                 }
+
+                console.log( $scope.tour_id)
             }
 
             if($scope.tour_id){
                 $scope.getInfoTour();
             }
-
-            // $scope.booking = function () {
-            //     jQuery.ajax({
-            //         url: "https://script.google.com/macros/s/AKfycbzFBoal8EziEdd8CbHCMjZr-dgjKlIzIuH8SXBD68ticWSo0cZhvMJgMS9GwhuMzlNhAg/exec",
-            //         type: "post",
-            //         data: jQuery("#contact").serializeArray(),
-            //         success: function() {
-            //             toastr.success("Gửi thông tin thành công");
-            //         },
-            //         error: function() {
-            //             toastr.error("Gửi thông tin thất bại");
-            //         }
-            //     });
-            // }
 
             $scope.booking = function () {
                 $scope.loading.submit = true;
@@ -324,6 +321,7 @@
                         'X-CSRF-TOKEN': "{{csrf_token()}}"
                     },
                     data: {
+                        tour_id: $scope.tour_id,
                         customer_name: $scope.form.customer_name,
                         customer_phone: $scope.form.customer_phone,
                         customer_email: $scope.form.customer_email,
@@ -342,6 +340,8 @@
                             $scope.errors = null;
                             toastr.success("Gửi thông tin thành công");
                             $scope.isOk = true;
+                            $scope.form = {};
+                            $scope.tour_id = null;
                             // window.location.href = "/dat-hang-thanh-cong/";
                         } else {
                             toastr.error("Gửi thông tin thất bại");

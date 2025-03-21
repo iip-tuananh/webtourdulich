@@ -161,6 +161,8 @@ class FrontController extends Controller
         \Illuminate\Support\Facades\DB::beginTransaction();
         try {
             $translate = [
+                'tour_id.required' => 'Vui lòng chọn tour',
+                'tour_id.not_in' => 'Vui lòng chọn tour',
                 'customer_name.required' => 'Vui lòng nhập họ tên',
                 'customer_phone.required' => 'Vui lòng nhập số điện thoại',
                 'customer_phone.regex' => 'Số điện thoại không đúng định dạng',
@@ -171,6 +173,7 @@ class FrontController extends Controller
             $validate = \Illuminate\Support\Facades\Validator::make(
                 $request->all(),
                 [
+                    'tour_id' => 'required|not_in:0',
                     'customer_name' => 'required',
                     'customer_phone' => 'required|regex:/^(0)[0-9]{9,11}$/',
                     'customer_address' => 'required',
@@ -189,20 +192,22 @@ class FrontController extends Controller
             }
 
 
-        $client = new \GuzzleHttp\Client();
-        $googleSheetUrl = 'https://script.google.com/macros/s/AKfycbx6Ebc8OGh0qBbzE8xWxHzzEgETVBQzT7f_ZQ3q61ZCO-czKqB9ukNnXA9N6HF6apPBgQ/exec';
+            $tour = Tour::query()->find($request->tour_id);
+            $client = new \GuzzleHttp\Client();
+            $googleSheetUrl = 'https://script.google.com/macros/s/AKfycbw-CuBIT2K70yZRc8dP_Y7ie39rkz4FJIloXN3_DCvjYORKBGupfJnp1_e8vpZrXd1wtQ/exec';
 
-        $response = $client->post($googleSheetUrl, [
-            'form_params' => [
-                'customer_name'    => $request->customer_name,
-                'customer_address' => $request->customer_address,
-                'customer_phone'   => $request->customer_phone,
-                'customer_email'   => $request->customer_email,
-                'customer_time'   => $request->customer_time,
-                'customer_ticket'  => $request->customer_ticket,
-                'customer_content' => $request->customer_content,
-            ]
-        ]);
+            $response = $client->post($googleSheetUrl, [
+                'form_params' => [
+                    'tour'    => $tour->title_short,
+                    'customer_name'    => $request->customer_name,
+                    'customer_address' => $request->customer_address,
+                    'customer_phone'   => $request->customer_phone,
+                    'customer_email'   => $request->customer_email,
+                    'customer_time'   => $request->customer_time,
+                    'customer_ticket'  => $request->customer_ticket,
+                    'customer_content' => $request->customer_content,
+                ]
+            ]);
 
             $result = json_decode($response->getBody(), true);
             if (!isset($result['status']) || $result['status'] != 'success') {

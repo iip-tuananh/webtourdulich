@@ -35,11 +35,11 @@
 <!-- Fav Icon -->
 <link rel="icon" href="{{$config->favicon->path ?? ''}}" type="image/x-icon">
 <!-- / Yoast SEO plugin. -->
-<link href="{{ env('AWS_R2_URL') }}/site/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="{{ env('AWS_R2_URL') }}/site/css/font-awesome.min.css" rel="stylesheet"/>
-<link href="{{ env('AWS_R2_URL') }}/site/css/style_chung_min.css" rel="stylesheet"/>
+<link href="/site/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/site/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="/site/css/style_chung_min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-<script type="text/javascript" src="{{ env('AWS_R2_URL') }}/site/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="{{ env('AWS_R2_URL') }}/site/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ env('AWS_R2_URL') }}/site/js/js_common.min.js"></script>
+<script type="text/javascript" src="/site/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/site/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/site/js/js_common.min.js"></script>
